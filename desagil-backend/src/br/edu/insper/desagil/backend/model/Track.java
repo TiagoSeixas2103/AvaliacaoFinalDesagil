@@ -24,9 +24,15 @@ public class Track {
 	}
 	
 	public String getDurationString( ) {
+		String durationFim = "";
 		Integer durationMin = (Integer) this.duration/60;
 		Integer durationSeg = (Integer) this.duration - durationMin*60;
-		String durationFim = durationMin + ":" + durationSeg;
+		if (durationSeg < 10) {
+			durationFim = durationMin + ":0" + durationSeg;
+		} else {
+			durationFim = durationMin + ":" + durationSeg;
+		}
+		
 		return durationFim;	
 		
 	}

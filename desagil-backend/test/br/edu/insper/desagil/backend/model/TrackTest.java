@@ -11,50 +11,81 @@ class TrackTest {
 	@BeforeEach
 	void setUp() {
 	}
-	
 
 	@Test
-	void avaliacoes1233() {
-		Playlist playlist = new Playlist(5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.putRating("usuario2", 1.5);
-		playlist.putRating("usuario3", 2.5);
-		playlist.putRating("usuario3", 2.5);
-		playlist.averageRatings();
-		assertEquals(2, playlist.averageRatings());
+	void testZeroSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 0);
+		assertEquals("0:00", track.getDurationString());
 	}
 
 	@Test
-	void avaliacoes121() {
-		Playlist playlist = new Playlist(5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.putRating("usuario2", 1.5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.averageRatings();
-		assertEquals(1.5, playlist.averageRatings());
+	void testFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 5);
+		assertEquals("0:05", track.getDurationString());
 	}
 
 	@Test
-	void avaliacoes122() {
-		Playlist playlist = new Playlist(5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.putRating("usuario2", 1.5);
-		playlist.putRating("usuario2", 1.5);
-		playlist.averageRatings();
-		assertEquals(1.5, playlist.averageRatings());
+	void testTwentyFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 25);
+		assertEquals("0:25", track.getDurationString());
 	}
 
 	@Test
-	void avaliacoes1123() {
-		Playlist playlist = new Playlist(5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.putRating("usuario1", 1.5);
-		playlist.putRating("usuario2", 1.5);
-		playlist.putRating("usuario3", 3.5);
-		playlist.averageRatings();
-		assertEquals(2, playlist.averageRatings());
+	void testOneMinuteZeroSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 60);
+		assertEquals("1:00", track.getDurationString());
+	}
+
+	@Test
+	void testOneMinuteFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 65);
+		assertEquals("1:05", track.getDurationString());
+	}
+
+	@Test
+	void testOneMinuteTwentyFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 85);
+		assertEquals("1:25", track.getDurationString());
+	}
+
+	@Test
+	void testTwoMinutesZeroSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 120);
+		assertEquals("2:00", track.getDurationString());
+	}
+
+	@Test
+	void testTwoMinutesFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 125);
+		assertEquals("2:05", track.getDurationString());
+	}
+
+	@Test
+	void testTwoMinutesTwentyFiveSeconds() {
+		Artist artist = new Artist("Ana");
+		Track track = new Track(artist, "faixa", 145);
+		assertEquals("2:25", track.getDurationString());
+	}
+
+	@Test
+	void testOneCollaborator() {
+		Artist artist = new Artist("Anitta");
+		Track track = new Track(artist, "faixa", 0);
+		assertEquals("0:00", track.getDurationString());
+	}
+
+	@Test
+	void testTwoCollaborators() {
+		Artist artist = new Artist("Anitta");
+		Track track = new Track(artist, "faixa", 0);
+		assertEquals("0:00", track.getDurationString());
 	}
 }
-
-
-	
